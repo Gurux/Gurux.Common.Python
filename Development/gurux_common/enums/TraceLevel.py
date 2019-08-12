@@ -31,9 +31,9 @@
 #  This code is licensed under the GNU General Public License v2.
 #  Full text may be retrieved at http://www.gnu.org/licenses/gpl-2.0.txt
 # ---------------------------------------------------------------------------
-from enum import Flag
+from enum import IntFlag
 
-class TraceLevel(Flag):
+class TraceLevel(IntFlag):
     ###Specifies trace levels.###
 
     OFF = 0x0
