@@ -10,3 +10,9 @@ For more info check out [Gurux](http://www.gurux.org/ "Gurux").
 We are updating documentation on Gurux web page. 
 
 If you have problems you can ask your questions in Gurux [Forum](http://www.gurux.org/forum).
+
+You can get source codes from http://www.github.com/gurux or intall package: 
+
+```python
+pip install gurux-common
+```
