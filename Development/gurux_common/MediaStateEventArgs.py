@@ -33,8 +33,11 @@
 # ---------------------------------------------------------------------------
 from .enums.MediaState import MediaState
 
+###Python 2 requires this
+#pylint: disable=bad-option-value,old-style-class
 class MediaStateEventArgs:
     """An argument class for media state changed event."""
+    #pylint: disable=too-few-public-methods
 
     def __init__(self, state=MediaState.CLOSED):
         """

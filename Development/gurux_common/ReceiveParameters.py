@@ -31,9 +31,12 @@
 #  This code is licensed under the GNU General Public License v2.
 #  Full text may be retrieved at http://www.gnu.org/licenses/gpl-2.0.txt
 # ---------------------------------------------------------------------------
-class ReceiveParameters:
-    """ReceiveParameters class is used when data is read synchronously."""
 
+###Python 2 requires this ot property is not working.
+#pylint: disable=bad-option-value, useless-object-inheritance
+class ReceiveParameters(object):
+    """ReceiveParameters class is used when data is read synchronously."""
+    #pylint: disable=too-few-public-methods
 
     def __init__(self):
         """Constructor."""

@@ -31,8 +31,9 @@
 #  This code is licensed under the GNU General Public License v2.
 #  Full text may be retrieved at http://www.gnu.org/licenses/gpl-2.0.txt
 # ---------------------------------------------------------------------------
-from .IGXMedia import *
-from .IGXMediaListener import *
-from .TraceEventArgs import *
-from .ReceiveEventArgs import *
-from .ReceiveParameters import *
+from .GXCommon import GXCommon
+from .IGXMedia import IGXMedia
+from .IGXMediaListener import IGXMediaListener
+from .TraceEventArgs import TraceEventArgs
+from .ReceiveEventArgs import ReceiveEventArgs
+from .ReceiveParameters import ReceiveParameters

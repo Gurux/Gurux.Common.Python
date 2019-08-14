@@ -31,10 +31,18 @@
 #  This code is licensed under the GNU General Public License v2.
 #  Full text may be retrieved at http://www.gnu.org/licenses/gpl-2.0.txt
 # ---------------------------------------------------------------------------
-from enum import IntFlag
+from ..GXCommon import GXCommon
 
-class TraceLevel(IntFlag):
+#pylint: disable=no-name-in-module
+if GXCommon.getVersion() < (3, 6):
+    __base = object
+else:
+    from enum import Flag
+    __base = Flag
+
+class TraceLevel(__base):
     ###Specifies trace levels.###
+    #pylint: disable=too-few-public-methods
 
     OFF = 0x0
     ###Output no tracing and debugging messages.###

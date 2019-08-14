@@ -32,13 +32,10 @@
 #  Full text may be retrieved at http://www.gnu.org/licenses/gpl-2.0.txt
 # ---------------------------------------------------------------------------
 import abc
-from .ReceiveEventArgs import ReceiveEventArgs
-from .MediaStateEventArgs import MediaStateEventArgs
-from .PropertyChangedEventArgs import PropertyChangedEventArgs
-from .TraceEventArgs import TraceEventArgs
-
-#pylint: disable=no-self-argument
-class IGXMediaListener(metaclass=abc.ABCMeta):
+ABC = abc.ABCMeta('ABC', (object,), {'__slots__': ()})
+class IGXMediaListener(ABC):
+    #pylint: disable=no-self-argument
+    __metaclass__ = abc.ABCMeta
     """Media component will notify events throught this interface."""
 
     @abc.abstractmethod
@@ -52,7 +49,7 @@ class IGXMediaListener(metaclass=abc.ABCMeta):
         """
 
     @abc.abstractmethod
-    def onReceived(sender, e: ReceiveEventArgs):
+    def onReceived(sender, e):
         """Media component sends received data through this method.
 
         sender : The source of the event.
@@ -60,14 +57,14 @@ class IGXMediaListener(metaclass=abc.ABCMeta):
         """
 
     @abc.abstractmethod
-    def onMediaStateChange(sender, e: MediaStateEventArgs):
+    def onMediaStateChange(sender, e):
         """Media component sends notification, when its state changes.
         sender : The source of the event.
         e : Event arguments.
         """
 
     @abc.abstractmethod
-    def onTrace(sender, e: TraceEventArgs):
+    def onTrace(sender, e):
         """Called when the Media is sending or receiving data.
 
         sender : The source of the event.
@@ -75,7 +72,7 @@ class IGXMediaListener(metaclass=abc.ABCMeta):
         """
 
     @abc.abstractmethod
-    def onPropertyChanged(sender, e: PropertyChangedEventArgs):
+    def onPropertyChanged(sender, e):
         """
         Event is raised when a property is changed on a component.
 

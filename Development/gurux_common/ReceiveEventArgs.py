@@ -31,8 +31,13 @@
 #  This code is licensed under the GNU General Public License v2.
 #  Full text may be retrieved at http://www.gnu.org/licenses/gpl-2.0.txt
 # ---------------------------------------------------------------------------
+from .GXCommon import GXCommon
+
+###Python 2 requires this
+#pylint: disable=bad-option-value,old-style-class
 class ReceiveEventArgs:
     """Argument class for IGXMedia data received events."""
+    #pylint: disable=too-few-public-methods
 
     def __init__(self, data=None, senderInfo=None):
         """
@@ -47,5 +52,5 @@ class ReceiveEventArgs:
 
     def __str__(self):
         if isinstance(self.data, (bytearray, bytes)):
-            return self.senderInformation + ":" + bytearray.hex(self.data)
+            return self.senderInformation + ":" + GXCommon.toHex(self.data)
         return self.senderInformation + ":" + str(self.data)

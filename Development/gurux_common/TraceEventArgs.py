@@ -32,12 +32,15 @@
 #  Full text may be retrieved at http://www.gnu.org/licenses/gpl-2.0.txt
 # ---------------------------------------------------------------------------
 import datetime
-from .enums import TraceTypes
+from .GXCommon import GXCommon
 
-class TraceEventArgs:
+###Python 2 requires this ot property is not working.
+#pylint: disable=bad-option-value, useless-object-inheritance
+class TraceEventArgs(object):
+    #pylint: disable=too-few-public-methods
     """Argument class for IGXMedia connection and disconnection events."""
 
-    def __init__(self, traceType: TraceTypes, data, index=0, length=None):
+    def __init__(self, traceType, data, index=0, length=None):
         """
         Constructor.
 
@@ -72,7 +75,7 @@ class TraceEventArgs:
         if not self.data:
             return ""
         if isinstance(self.data, (bytearray, bytes)):
-            return bytearray.hex(self.data)
+            return GXCommon.toHex(self.data)
         return str(self.data)
 
     def __str__(self):

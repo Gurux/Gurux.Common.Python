@@ -31,6 +31,6 @@
 #  This code is licensed under the GNU General Public License v2.
 #  Full text may be retrieved at http://www.gnu.org/licenses/gpl-2.0.txt
 # ---------------------------------------------------------------------------
-from .MediaState import *
-from .TraceLevel import *
-from .TraceTypes import *
+from .MediaState import MediaState
+from .TraceLevel import TraceLevel
+from .TraceTypes import TraceTypes

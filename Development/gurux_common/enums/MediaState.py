@@ -34,6 +34,7 @@
 from enum import Enum
 
 class MediaState(Enum):
+    #pylint: disable=too-few-public-methods
     """Available media state changes."""
 
     CLOSED = 0
