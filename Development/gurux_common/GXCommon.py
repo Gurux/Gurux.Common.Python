@@ -64,6 +64,9 @@ class GXCommon:
         __hexArray = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F')
         LOW_BYTE_PART = 0x0F
         hexChars = ""
+        #Python 2.7 handles bytes as a string array. It's changed to bytearray.
+        if sys.version_info < (3, 0) and not isinstance(value, bytearray):
+            value = bytearray(value)
         for it in value:
             hexChars += __hexArray[it >> _NIBBLE]
             hexChars += __hexArray[it & LOW_BYTE_PART]

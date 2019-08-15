@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="gurux_common",
-    version="1.0.7",
+    version="1.0.8",
     author="Gurux Ltd",
     author_email="gurux@gurux.org",
     description="Gurux common helpers for device commmunication.",

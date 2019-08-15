@@ -34,12 +34,11 @@
 import abc
 ABC = abc.ABCMeta('ABC', (object,), {'__slots__': ()})
 class IGXMediaListener(ABC):
-    #pylint: disable=no-self-argument
     __metaclass__ = abc.ABCMeta
     """Media component will notify events throught this interface."""
 
     @abc.abstractmethod
-    def onError(sender, ex):
+    def onError(self, sender, ex):
         """
         Represents the method that will handle the error event of a Gurux
         component.
@@ -49,7 +48,7 @@ class IGXMediaListener(ABC):
         """
 
     @abc.abstractmethod
-    def onReceived(sender, e):
+    def onReceived(self, sender, e):
         """Media component sends received data through this method.
 
         sender : The source of the event.
@@ -57,14 +56,14 @@ class IGXMediaListener(ABC):
         """
 
     @abc.abstractmethod
-    def onMediaStateChange(sender, e):
+    def onMediaStateChange(self, sender, e):
         """Media component sends notification, when its state changes.
         sender : The source of the event.
         e : Event arguments.
         """
 
     @abc.abstractmethod
-    def onTrace(sender, e):
+    def onTrace(self, sender, e):
         """Called when the Media is sending or receiving data.
 
         sender : The source of the event.
@@ -72,7 +71,7 @@ class IGXMediaListener(ABC):
         """
 
     @abc.abstractmethod
-    def onPropertyChanged(sender, e):
+    def onPropertyChanged(self, sender, e):
         """
         Event is raised when a property is changed on a component.
 
