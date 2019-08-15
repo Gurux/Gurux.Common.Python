@@ -51,7 +51,7 @@ class TraceEventArgs(object):
         """
 
         ###Time stamp when data is send or received.
-        self.timestamp = datetime.datetime.now().time()
+        self.timestamp = datetime.datetime.now()
         ###Trace type.
         self.type = traceType
         if isinstance(data, (bytearray, bytes)):
