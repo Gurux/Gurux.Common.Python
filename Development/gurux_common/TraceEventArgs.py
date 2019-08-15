@@ -52,14 +52,15 @@ class TraceEventArgs(object):
 
         ###Time stamp when data is send or received.
         self.timestamp = datetime.datetime.now().time()
-
         ###Trace type.
         self.type = traceType
-        if length is None or index != 0:
-            length = len(data) - index
-        ###Send or received data.
-        self.__data = data[index:length]
-
+        if isinstance(data, (bytearray, bytes)):
+            if length is None or index != 0:
+                length = len(data) - index
+            ###Send or received data.
+            self.__data = data[index:length]
+        else:
+            self.__data = data
 
     def __getData(self):
         return self.__data

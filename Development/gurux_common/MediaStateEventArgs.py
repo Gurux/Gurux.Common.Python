@@ -48,3 +48,6 @@ class MediaStateEventArgs:
         self.state = state
         ###Is connection accepted.
         self.accept = True
+
+    def __str__(self):
+        return str(self.state)
