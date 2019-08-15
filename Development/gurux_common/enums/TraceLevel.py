@@ -37,8 +37,8 @@ from ..GXCommon import GXCommon
 if GXCommon.getVersion() < (3, 6):
     __base = object
 else:
-    from enum import Flag
-    __base = Flag
+    from enum import IntFlag
+    __base = IntFlag
 
 class TraceLevel(__base):
     ###Specifies trace levels.###

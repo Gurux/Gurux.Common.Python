@@ -1,11 +1,11 @@
 import setuptools
 
-with open("../README.md", "r") as fh:
+with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="gurux_common",
-    version="1.0.3",
+    version="1.0.5",
     author="Gurux Ltd",
     author_email="gurux@gurux.org",
     description="Gurux common helpers for device commmunication.",

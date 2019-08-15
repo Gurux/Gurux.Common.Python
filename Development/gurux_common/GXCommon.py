@@ -52,13 +52,8 @@ class GXCommon:
 
     @classmethod
     def getVersion(cls):
-        """Is this version 2."""
+        """Get version."""
         return sys.version_info
-
-    @classmethod
-    def isV2(cls):
-        """Is this version 2."""
-        return sys.version_info < (3, 0)
 
     @classmethod
     def toHex(cls, value):
