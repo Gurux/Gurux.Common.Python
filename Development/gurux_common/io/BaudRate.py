@@ -31,9 +31,14 @@
 #  This code is licensed under the GNU General Public License v2.
 #  Full text may be retrieved at http://www.gnu.org/licenses/gpl-2.0.txt
 # ---------------------------------------------------------------------------
-from enum import IntEnum
+#pylint: disable=broad-except,no-name-in-module
+try:
+    from enum import IntEnum
+    __base = IntEnum
+except Exception:
+    __base = object
 
-class BaudRate(IntEnum):
+class BaudRate(__base):
     """Defines a list of commonly supported serial communication rates (baud rates)."""
     BAUD_RATE_38400 = 38400
     """38,400 baud."""

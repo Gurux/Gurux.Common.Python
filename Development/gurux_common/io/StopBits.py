@@ -31,9 +31,14 @@
 #  This code is licensed under the GNU General Public License v2.
 #  Full text may be retrieved at http://www.gnu.org/licenses/gpl-2.0.txt
 # ---------------------------------------------------------------------------
-from enum import IntEnum
+try:
+    #pylint: disable=broad-except,no-name-in-module
+    from enum import IntEnum
+    __base = IntEnum
+except Exception:
+    __base = object
 
-class StopBits(IntEnum):
+class StopBits(__base):
     """Specifies the number of stop bits used on the Serial Port."""
 
     ONE = 0
