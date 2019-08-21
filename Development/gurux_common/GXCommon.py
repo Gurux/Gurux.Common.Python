@@ -94,7 +94,7 @@ class GXCommon:
         buff = bytearray()
         lastValue = -1
         for ch in value:
-            if '0' >= ch < 'g':
+            if '0' <= ch <= '9' or 'a' <= ch <= 'f' or 'A' <= ch <= 'F':
                 if lastValue == -1:
                     lastValue = cls.___getValue(ch)
                 elif lastValue != -1:
