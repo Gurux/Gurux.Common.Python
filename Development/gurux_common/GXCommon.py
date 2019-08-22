@@ -33,17 +33,15 @@
 # ---------------------------------------------------------------------------
 import sys
 
-#Maximum size of byte.
-_MAX_BYTE_SIZE = 0xFF
-_NIBBLE = 4
-#Value of Hex A in decimal.
-_HEX_A_DECIMAL_VALUE = 10
-
 ###Python 2 requires this
 #pylint: disable=bad-option-value,old-style-class
 class GXCommon:
     #pylint: disable=too-few-public-methods
     """General methods for communication."""
+
+    __NIBBLE = 4
+    __HEX_ARRAY = "0123456789ABCDEFGH"
+    __LOW_BYTE_PART = 0x0F
 
     def __init__(self, data=None, senderInfo=None):
         """
@@ -61,15 +59,13 @@ class GXCommon:
         #Return empty string if array is empty.
         if not value:
             return ""
-        __hexArray = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F')
-        LOW_BYTE_PART = 0x0F
         hexChars = ""
         #Python 2.7 handles bytes as a string array. It's changed to bytearray.
         if sys.version_info < (3, 0) and not isinstance(value, bytearray):
             value = bytearray(value)
         for it in value:
-            hexChars += __hexArray[it >> _NIBBLE]
-            hexChars += __hexArray[it & LOW_BYTE_PART]
+            hexChars += GXCommon.__HEX_ARRAY[it >> GXCommon.__NIBBLE]
+            hexChars += GXCommon.__HEX_ARRAY[it & GXCommon.__LOW_BYTE_PART]
             hexChars += ' '
         return hexChars
 
@@ -77,16 +73,10 @@ class GXCommon:
     @classmethod
     def ___getValue(cls, c):
         #Id char.
-        if c > '9':
-            if c > 'Z':
-                value = c.encode()[0] - 'a'.encode()[0]
-            else:
-                value = c.encode()[0] - 'A'.encode()[0]
-            value += _HEX_A_DECIMAL_VALUE
-        else:
-            #If number.
-            value = c.encode()[0] - '0'.encode()[0]
-        return value
+        pos = GXCommon.__HEX_ARRAY.find(c)
+        if pos == -1:
+            raise Exception("Invalid hex string")
+        return pos
 
     @classmethod
     def hexToBytes(cls, value):
@@ -94,11 +84,11 @@ class GXCommon:
         buff = bytearray()
         lastValue = -1
         for ch in value:
-            if '0' <= ch <= '9' or 'a' <= ch <= 'f' or 'A' <= ch <= 'F':
+            if ch != ' ':
                 if lastValue == -1:
                     lastValue = cls.___getValue(ch)
                 elif lastValue != -1:
-                    buff.append(lastValue << _NIBBLE | cls.___getValue(ch))
+                    buff.append(lastValue << GXCommon.__NIBBLE | cls.___getValue(ch))
                     lastValue = -1
             elif lastValue != -1:
                 buff.append(cls.___getValue(ch))
