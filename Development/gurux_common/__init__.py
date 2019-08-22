@@ -37,3 +37,4 @@ from .IGXMediaListener import IGXMediaListener
 from .TraceEventArgs import TraceEventArgs
 from .ReceiveEventArgs import ReceiveEventArgs
 from .ReceiveParameters import ReceiveParameters
+from .TimeoutException import TimeoutException

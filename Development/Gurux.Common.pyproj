@@ -41,6 +41,7 @@
     <Compile Include="gurux_common\ReceiveParameters.py" />
     <Compile Include="gurux_common\GXCommon.py" />
     <Compile Include="gurux_common\TraceEventArgs.py" />
+    <Compile Include="gurux_common\TimeoutException.py" />
     <Compile Include="gurux_common\__init__.py" />
     <Compile Include="setup.py" />
   </ItemGroup>
