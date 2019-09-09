@@ -73,6 +73,8 @@ class GXCommon:
     @classmethod
     def ___getValue(cls, c):
         #Id char.
+        if c.islower():
+            c = c.upper()
         pos = GXCommon.__HEX_ARRAY.find(c)
         if pos == -1:
             raise Exception("Invalid hex string")
@@ -80,7 +82,7 @@ class GXCommon:
 
     @classmethod
     def hexToBytes(cls, value):
-        ###Convert string to byte array.###
+        """Convert string to byte array."""
         buff = bytearray()
         lastValue = -1
         for ch in value:
